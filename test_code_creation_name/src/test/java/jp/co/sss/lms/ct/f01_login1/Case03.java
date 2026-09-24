@@ -38,31 +38,15 @@ public class Case03 {
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
 
-		// ブラウザをリセット
-		webDriver.manage().deleteAllCookies();
-
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
 
-		//入力するログインID
-		webDriver.findElement(By.id("loginId")).clear();
-		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA02");
-
-		//入力するパスワード
-		webDriver.findElement(By.id("password")).clear();
-		webDriver.findElement(By.id("password")).sendKeys("StudentAA02");
-
-		//ログインボタンをクリック
-		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
-
-		//Utilの機能より、規約画面の「securityFlg」が表示されるまで最大5秒待機する
-		visibilityTimeout(By.name("securityFlg"), 5);
-
 		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-		assertTrue(webDriver.getTitle().contains("セキュリティ規約"));
+		assertEquals("ログイン | LMS", webDriver.getTitle());
 
-		//エビデンスを取得（テストNo.1）
+		//エビデンスを取得（テスト01）
 		getEvidence(new Object() {
+
 		});
 
 	}
@@ -95,7 +79,7 @@ public class Case03 {
 		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
 
-		//エビデンスを取得（テストNo.1）
+		//エビデンスを取得（テスト02）
 		getEvidence(new Object() {
 		});
 	}
