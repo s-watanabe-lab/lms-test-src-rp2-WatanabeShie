@@ -44,7 +44,7 @@ public class Case02 {
 
 		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
 		assertEquals("ログイン | LMS", webDriver.getTitle());
-		//エビデンスを取得（テストNo.1）
+		//エビデンスを取得（テスト01）
 		getEvidence(new Object() {
 		});
 	}
@@ -78,7 +78,7 @@ public class Case02 {
 		assertTrue(errorMsg.isDisplayed());
 		assertTrue(errorMsg.getText().contains("ログインに失敗しました。"));
 
-		//エビデンスを取得（テスト01）
+		//エビデンスを取得（テスト02）
 		getEvidence(new Object() {
 		});
 	}
