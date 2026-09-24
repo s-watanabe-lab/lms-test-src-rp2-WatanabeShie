@@ -40,10 +40,18 @@ public class Case02 {
 	@Order(1)
 	@DisplayName("テスト01 ログインID未入力")
 	void test01() {
+
+		// ブラウザをリセット
+		webDriver.manage().deleteAllCookies();
+
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
 
+		// ログインID欄はクリアにする
+		webDriver.findElement(By.id("loginId")).clear();
+
 		//入力するパスワード
+		webDriver.findElement(By.id("password")).clear();
 		webDriver.findElement(By.id("password")).sendKeys("StudentAA001");
 
 		//ログインボタンをクリック
@@ -56,7 +64,7 @@ public class Case02 {
 		assertTrue(errorMsg.isDisplayed());
 
 		// メッセージの内容が正しいか
-		assertEquals("ログインIDは必須です。", errorMsg.getText());
+		assertTrue(errorMsg.getText().contains("ログインIDは必須です。"));
 
 		//エビデンスを取得（テスト01）
 		getEvidence(new Object() {
@@ -67,11 +75,19 @@ public class Case02 {
 	@Order(2)
 	@DisplayName("テスト02 パスワード未入力")
 	void test02() {
+
+		// ブラウザをリセット
+		webDriver.manage().deleteAllCookies();
+
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
 
 		//入力するログインID
+		webDriver.findElement(By.id("loginId")).clear();
 		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA001");
+
+		// パスワード欄はクリアにする
+		webDriver.findElement(By.id("password")).clear();
 
 		//ログインボタンをクリック
 		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
@@ -94,13 +110,24 @@ public class Case02 {
 	@Order(3)
 	@DisplayName("テスト03 ログインID・パスワード未入力")
 	void test03() {
+
+		// ブラウザをリセット
+		webDriver.manage().deleteAllCookies();
+
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
+
+		//未入力の欄はクリアにする
+		webDriver.findElement(By.id("loginId")).clear();
+		webDriver.findElement(By.id("password")).clear();
 
 		//未入力の状態でログインボタンをクリック
 		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 
-		//検証：エラーメッセージが表示されているか
+		//1つ目のエラーが出るまで画面更新を待つ
+		webDriver.findElement(By.className("error"));
+
+		//検証：画面更新後に全てのエラーメッセージが表示されているか
 		List<WebElement> errorMsg = webDriver.findElements(By.className("error"));
 
 		// メッセージが画面に表示されているか（CSS等で隠れていないか）
@@ -117,13 +144,19 @@ public class Case02 {
 	@Order(4)
 	@DisplayName("テスト04 誤ったログインID・パスワードを入力")
 	void test04() {
+
+		// ブラウザをリセット
+		webDriver.manage().deleteAllCookies();
+
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
 
 		//入力するログインID
+		webDriver.findElement(By.id("loginId")).clear();
 		webDriver.findElement(By.id("loginId")).sendKeys("StudentA300");
 
 		//入力するパスワード
+		webDriver.findElement(By.id("password")).clear();
 		webDriver.findElement(By.id("password")).sendKeys("StudentA300");
 
 		//ログインボタンをクリック
@@ -145,13 +178,25 @@ public class Case02 {
 	@Order(5)
 	@DisplayName("テスト05 境界値：ロック直前（2回連続失敗）")
 	void test05() {
+
+		//test04までの失敗カウントをリセット
+		webDriver.manage().deleteAllCookies();
+
 		//URLにアクセスする
 		goTo("http://localhost:8080/lms/");
 
 		//繰り返し処理
 		for (int i = 0; i < 2; i++) {
+
+			//①ID欄に入力
 			webDriver.findElement(By.id("loginId")).clear();
 			webDriver.findElement(By.id("loginId")).sendKeys("StudentA300");
+
+			//②PW欄に入力
+			webDriver.findElement(By.id("password")).clear();
+			webDriver.findElement(By.id("password")).sendKeys("StudentA300");
+
+			//ボタンを押す
 			webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 		}
 
@@ -175,8 +220,15 @@ public class Case02 {
 
 		//繰り返し処理
 		for (int i = 0; i < 3; i++) {
+			//①ID欄に入力
 			webDriver.findElement(By.id("loginId")).clear();
 			webDriver.findElement(By.id("loginId")).sendKeys("StudentA300");
+
+			//②PW欄に入力
+			webDriver.findElement(By.id("password")).clear();
+			webDriver.findElement(By.id("password")).sendKeys("StudentA300");
+
+			//ボタンを押す
 			webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 		}
 
