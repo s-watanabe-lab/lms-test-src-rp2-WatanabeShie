@@ -135,30 +135,30 @@ public class Case05 {
 
 	}
 
-	//	@Test
-	//	@Order(5)
-	//	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
-	//	void test05() {
-	//
-	//		//「キーワード」欄に「あ」と入力する
-	//		webDriver.findElement(By.id("form")).clear();
-	//		webDriver.findElement(By.id("form")).sendKeys("あ");
-	//
-	//		//「検索」ボタンをクリック
-	//		webDriver.findElement(By.cssSelector("input[value='検索']")).click();
-	//
-	//		//検索結果テーブルが表示されるまで待機
-	//		visibilityTimeout(By.className("sortabletable"), 5);
-	//
-	//		//正しい画面で結果が表示されていることを検証
-	//		assertEquals("よくある質問 | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト05）
-	//		getEvidence(new Object() {
-	//
-	//		});
-	//	}
-	//
+	@Test
+	@Order(5)
+	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
+	void test05() {
+
+		//「キーワード」欄に「あ」と入力する
+		webDriver.findElement(By.id("form")).clear();
+		webDriver.findElement(By.id("form")).sendKeys("あ");
+
+		//「検索」ボタンをクリック
+		webDriver.findElement(By.cssSelector("input[value='検索']")).click();
+
+		//検索結果テーブルが表示されるまで待機
+		visibilityTimeout(By.className("sortabletable"), 5);
+
+		//正しい画面で結果が表示されていることを検証
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト05）
+		getEvidence(new Object() {
+
+		});
+	}
+
 	//	@Test
 	//	@Order(6)
 	//	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
