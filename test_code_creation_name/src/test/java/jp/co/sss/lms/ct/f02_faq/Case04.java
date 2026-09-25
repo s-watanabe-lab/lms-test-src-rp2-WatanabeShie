@@ -67,7 +67,7 @@ public class Case04 {
 		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 
 		//Utilの機能より、コース詳細画面の「h2」が表示されるまで最大5秒待機する
-		visibilityTimeout(By.tagName("h2"), 10);
+		visibilityTimeout(By.tagName("h2"), 5);
 
 		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
 		assertEquals("コース詳細 | LMS", webDriver.getTitle());
