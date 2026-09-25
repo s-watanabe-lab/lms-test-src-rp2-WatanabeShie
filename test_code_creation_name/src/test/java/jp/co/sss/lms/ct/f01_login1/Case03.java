@@ -56,12 +56,6 @@ public class Case03 {
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() {
 
-		// ブラウザをリセット
-		webDriver.manage().deleteAllCookies();
-
-		//URLにアクセスする
-		goTo("http://localhost:8080/lms/");
-
 		//入力するログインID
 		webDriver.findElement(By.id("loginId")).clear();
 		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
