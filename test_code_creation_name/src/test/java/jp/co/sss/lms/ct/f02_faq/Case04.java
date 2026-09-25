@@ -106,36 +106,36 @@ public class Case04 {
 		});
 	}
 
-	//	@Test
-	//	@Order(4)
-	//	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
-	//	void test04() {
-	//
-	//		// 遷移前のウィンドウハンドルを取得
-	//		String currentWindow = webDriver.getWindowHandle();
-	//
-	//		//画面上の「よくある質問」リンクをクリック
-	//		webDriver.findElement(By.linkText("よくある質問")).click();
-	//
-	//		// 新しく開いたタブ（別ウィンドウ）に操作対象を切り替える
-	//		for (String windowHandle : webDriver.getWindowHandles()) {
-	//
-	//			if (!windowHandle.equals(currentWindow)) {
-	//				webDriver.switchTo().window(windowHandle);
-	//				break;
-	//			}
-	//		}
-	//
-	//		//よくある質問画面が表示されるまで待機
-	//		visibilityTimeout(By.tagName("h2"), 5);
-	//
-	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-	//		assertEquals("よくある質問 | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト04）
-	//		getEvidence(new Object() {
-	//
-	//		});
-	//	}
+	@Test
+	@Order(4)
+	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
+	void test04() {
+
+		// 遷移前のウィンドウハンドルを取得
+		String currentWindow = webDriver.getWindowHandle();
+
+		//画面上の「よくある質問」リンクをクリック
+		webDriver.findElement(By.linkText("よくある質問")).click();
+
+		// 新しく開いたタブ（別ウィンドウ）に操作対象を切り替える
+		for (String windowHandle : webDriver.getWindowHandles()) {
+
+			if (!windowHandle.equals(currentWindow)) {
+				webDriver.switchTo().window(windowHandle);
+				break;
+			}
+		}
+
+		//よくある質問画面が表示されるまで待機
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト04）
+		getEvidence(new Object() {
+
+		});
+	}
 
 }
