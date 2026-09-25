@@ -159,21 +159,21 @@ public class Case05 {
 		});
 	}
 
-	//	@Test
-	//	@Order(6)
-	//	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
-	//	void test06() {
-	//
-	//		//「クリア」ボタンをクリック
-	//		webDriver.findElement(By.cssSelector("input[value='クリア']")).click();
-	//
-	//		//「キーワード」欄の値が空欄になっていることを検証
-	//		assertEquals("", webDriver.findElement(By.id("form")).getAttribute("value"));
-	//
-	//		//エビデンスを取得（テスト06）
-	//		getEvidence(new Object() {
-	//
-	//		});
-	//	}
+	@Test
+	@Order(6)
+	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
+	void test06() {
+
+		//「クリア」ボタンをクリック
+		webDriver.findElement(By.cssSelector("input[value='クリア']")).click();
+
+		//「キーワード」欄の値が空欄になっていることを検証
+		assertEquals("", webDriver.findElement(By.id("form")).getAttribute("value"));
+
+		//エビデンスを取得（テスト06）
+		getEvidence(new Object() {
+
+		});
+	}
 
 }
