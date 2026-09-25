@@ -159,11 +159,26 @@ public class Case06 {
 		});
 	}
 
-	//	@Test
-	//	@Order(6)
-	//	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
-	//	void test06() {
-	//		// TODO ここに追加
-	//	}
+	@Test
+	@Order(6)
+	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
+	void test06() {
+		//質問エリアのdtタグ（「Q.キャンセル料・途中退校について」）のリンクが表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("dt"), 5);
+
+		//画面上の質問エリアのdtタグ（「Q.キャンセル料・途中退校について」）リンクをクリック
+		webDriver.findElement(By.tagName("dt")).click();
+
+		//画面をした方向にスクロールして検索結果が見える位置にする
+		scrollBy("300");
+
+		//正しい画面で結果が表示されていることを検証
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト05）
+		getEvidence(new Object() {
+
+		});
+	}
 
 }
