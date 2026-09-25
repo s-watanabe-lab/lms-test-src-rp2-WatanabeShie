@@ -10,6 +10,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.openqa.selenium.By;
 
 /**
  * 結合テスト よくある質問機能
@@ -49,32 +50,32 @@ public class Case04 {
 		});
 	}
 
-	//	@Test
-	//	@Order(2)
-	//	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
-	//	void test02() {
-	//
-	//		//入力するログインID
-	//		webDriver.findElement(By.id("loginId")).clear();
-	//		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
-	//
-	//		//入力するパスワード
-	//		webDriver.findElement(By.id("password")).clear();
-	//		webDriver.findElement(By.id("password")).sendKeys("StudentAA011");
-	//
-	//		//ログインボタンをクリック
-	//		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
-	//
-	//		//Utilの機能より、コース詳細画面の「h2」が表示されるまで最大5秒待機する
-	//		visibilityTimeout(By.tagName("h2"), 10);
-	//
-	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-	//		assertEquals("コース詳細 | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト02）
-	//		getEvidence(new Object() {
-	//		});
-	//	}
+	@Test
+	@Order(2)
+	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
+	void test02() {
+
+		//入力するログインID
+		webDriver.findElement(By.id("loginId")).clear();
+		webDriver.findElement(By.id("loginId")).sendKeys("StudentAA01");
+
+		//入力するパスワード
+		webDriver.findElement(By.id("password")).clear();
+		webDriver.findElement(By.id("password")).sendKeys("StudentAA011");
+
+		//ログインボタンをクリック
+		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
+
+		//Utilの機能より、コース詳細画面の「h2」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 10);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("コース詳細 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト02）
+		getEvidence(new Object() {
+		});
+	}
 
 	//	@Test
 	//	@Order(3)
