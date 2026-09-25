@@ -134,13 +134,31 @@ public class Case06 {
 		});
 	}
 
-	//	@Test
-	//	@Order(5)
-	//	@DisplayName("テスト05 カテゴリ検索で該当カテゴリの検索結果だけ表示")
-	//	void test05() {
-	//		// TODO ここに追加
-	//	}
-	//
+	@Test
+	@Order(5)
+	@DisplayName("テスト05 カテゴリ検索で該当カテゴリの検索結果だけ表示")
+	void test05() {
+		//「【研修関係】」リンクが表示されるまで最大5秒待機する
+		visibilityTimeout(By.linkText("【研修関係】"), 5);
+
+		//画面上の「【研修関係】」リンクをクリック
+		webDriver.findElement(By.linkText("【研修関係】")).click();
+
+		//検索結果が表示されるまで待機
+		visibilityTimeout(By.className("sortabletable"), 5);
+
+		//画面をした方向にスクロールして検索結果が見える位置にする
+		scrollBy("300");
+
+		//正しい画面で結果が表示されていることを検証
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト05）
+		getEvidence(new Object() {
+
+		});
+	}
+
 	//	@Test
 	//	@Order(6)
 	//	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
