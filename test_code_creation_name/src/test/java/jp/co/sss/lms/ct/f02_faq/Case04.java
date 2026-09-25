@@ -77,34 +77,34 @@ public class Case04 {
 		});
 	}
 
-	//	@Test
-	//	@Order(3)
-	//	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
-	//	void test03() {
-	//
-	//		//上部メニューの「機能」ボタン("dropdown-toggle)1が表示されるまで最大5秒待機する
-	//		visibilityTimeout(By.className("dropdown-toggle"), 5);
-	//
-	//		//「機能」リンクをクリックしてメニューを開く
-	//		webDriver.findElement(By.className("dropdown-toggle")).click();
-	//
-	//		//「ヘルプ」リンクが表示されるまで最大5秒待機する
-	//		visibilityTimeout(By.linkText("ヘルプ"), 5);
-	//
-	//		//画面上の「ヘルプ」リンクをクリック
-	//		webDriver.findElement(By.linkText("ヘルプ")).click();
-	//
-	//		//ヘルプ画面が表示されるまで待機
-	//		visibilityTimeout(By.tagName("h2"), 5);
-	//
-	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-	//		assertEquals("ヘルプ | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト03）
-	//		getEvidence(new Object() {
-	//
-	//		});
-	//	}
+	@Test
+	@Order(3)
+	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
+	void test03() {
+
+		//上部メニューの「機能」ボタン("dropdown-toggle)1が表示されるまで最大5秒待機する
+		visibilityTimeout(By.className("dropdown-toggle"), 5);
+
+		//「機能」リンクをクリックしてメニューを開く
+		webDriver.findElement(By.className("dropdown-toggle")).click();
+
+		//「ヘルプ」リンクが表示されるまで最大5秒待機する
+		visibilityTimeout(By.linkText("ヘルプ"), 5);
+
+		//画面上の「ヘルプ」リンクをクリック
+		webDriver.findElement(By.linkText("ヘルプ")).click();
+
+		//ヘルプ画面が表示されるまで待機
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("ヘルプ | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト03）
+		getEvidence(new Object() {
+
+		});
+	}
 
 	//	@Test
 	//	@Order(4)
