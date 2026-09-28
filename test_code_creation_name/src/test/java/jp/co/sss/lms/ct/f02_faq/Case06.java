@@ -191,6 +191,7 @@ public class Case06 {
 		getEvidence(new Object() {
 
 		});
+
 	}
 
 }
