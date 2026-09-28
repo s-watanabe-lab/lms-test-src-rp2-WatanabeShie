@@ -147,8 +147,14 @@ public class Case06 {
 		//検索結果が表示されるまで待機
 		visibilityTimeout(By.className("sortabletable"), 5);
 
-		//画面をした方向にスクロールして検索結果が見える位置にする
+		//画面を下方向にスクロールして検索結果が見える位置にする
 		scrollBy("300");
+
+		//検索結果の一番上の質問テキストを取得
+		String questionText = webDriver.findElement(By.tagName("dt")).getText();
+
+		//研修関係の質問テキスト（「キャンセル料」）が含まれていることを検証する
+		assertTrue(questionText.contains("キャンセル料"));
 
 		//正しい画面で結果が表示されていることを検証
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
@@ -172,10 +178,16 @@ public class Case06 {
 		//画面をした方向にスクロールして検索結果が見える位置にする
 		scrollBy("300");
 
+		//表示された回答エリア（ddタグ）のテキストを取得
+		String answerTextString = webDriver.findElement(By.tagName("dd")).getText();
+
+		//解答のテキストが含まれているか検証する
+		assertTrue(answerTextString.contains("A."));
+
 		//正しい画面で結果が表示されていることを検証
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
 
-		//エビデンスを取得（テスト05）
+		//エビデンスを取得（テスト06）
 		getEvidence(new Object() {
 
 		});
