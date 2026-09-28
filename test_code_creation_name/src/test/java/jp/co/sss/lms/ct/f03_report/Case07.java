@@ -75,21 +75,33 @@ public class Case07 {
 		});
 	}
 
-	//	@Test
-	//	@Order(3)
-	//	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
-	//	void test03() {
-	//
-	//		//「詳細」ボタンをクリック
-	//		webDriver.findElement(By.className("btn-default")).click();
-	//
-	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-	//		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト03）
-	//		getEvidence(new Object() {
-	//		});
-	//	}
+	@Test
+	@Order(3)
+	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
+	void test03() {
+
+		//「未提出」が含まれる行の詳細ボタンを選択できるように探し出す
+		By targetBtn = By.xpath("//tr[contains(., '未提出')]//input[@value='詳細']");
+
+		//「詳細」ボタンが表示されるまで最大5秒待機する
+		visibilityTimeout(targetBtn, 5);
+
+		//画面を下方向にスクロールして検索結果が見える位置にする
+		scrollBy("300");
+
+		//「詳細」ボタンをクリック
+		webDriver.findElement(targetBtn).click();
+
+		//セクション詳細画面の「h2」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト03）
+		getEvidence(new Object() {
+		});
+	}
 
 	//	@Test
 	//	@Order(4)
