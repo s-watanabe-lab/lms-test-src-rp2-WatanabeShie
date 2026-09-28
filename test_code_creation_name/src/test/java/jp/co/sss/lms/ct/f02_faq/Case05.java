@@ -150,6 +150,12 @@ public class Case05 {
 		//検索結果テーブルが表示されるまで待機
 		visibilityTimeout(By.className("sortabletable"), 5);
 
+		//検索結果のテーブルのテキストを取得
+		String searchText = webDriver.findElement(By.tagName("dt")).getText();
+
+		//取得したテキストに「あ」が含まれていることを検証する
+		assertTrue(searchText.contains("あ"));
+
 		//正しい画面で結果が表示されていることを検証
 		assertEquals("よくある質問 | LMS", webDriver.getTitle());
 
