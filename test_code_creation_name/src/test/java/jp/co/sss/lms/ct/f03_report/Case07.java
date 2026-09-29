@@ -103,13 +103,28 @@ public class Case07 {
 		});
 	}
 
-	//	@Test
-	//	@Order(4)
-	//	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
-	//	void test04() {
-	//		// TODO ここに追加
-	//	}
-	//
+	@Test
+	@Order(4)
+	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
+	void test04() {
+
+		//「日報を提出する」ボタンが表示されるまで最大5秒待機する
+		visibilityTimeout(By.cssSelector("input[value*='を提出する']"), 5);
+
+		//「日報を提出する」ボタンをクリック
+		webDriver.findElement(By.cssSelector("input[value*='を提出する']")).click();
+
+		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("legend"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("レポート登録 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト04）
+		getEvidence(new Object() {
+		});
+	}
+
 	//	@Test
 	//	@Order(5)
 	//	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
