@@ -178,7 +178,32 @@ public class Case08 {
 	@Order(7)
 	@DisplayName("テスト07 該当レポートの「詳細」ボタンを押下しレポート詳細画面で修正内容が反映される")
 	void test07() {
-		// TODO ここに追加
+		//画面を下方向にスクロールしてレポート欄が見える位置にする
+		scrollBy("500");
+
+		//修正した日付を指定して、「詳細」ボタンのセレクタを指定
+		By detailBtn = By.xpath("//tr[contains(., '10月1日')]//input[@value='詳細']");
+
+		//「詳細」ボタンが表示されるまで最大5秒待機する
+		visibilityTimeout(detailBtn, 5);
+
+		//「詳細」ボタンをクリック
+		webDriver.findElement(detailBtn).click();
+
+		//レポート詳細画面の「h2」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("レポート詳細 | LMS", webDriver.getTitle());
+
+		//画面上テキストを取得し、テスト05で修正した内容が反映されていることを検証
+		String reportText = webDriver.findElement(By.tagName("body")).getText();
+		assertTrue(reportText.contains("継承"));
+
+		//エビデンスを取得（テスト07）
+		getEvidence(new Object() {
+
+		});
 	}
 
 }
