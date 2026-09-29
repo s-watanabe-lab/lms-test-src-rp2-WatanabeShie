@@ -134,7 +134,7 @@ public class Case08 {
 		//「提出する」ボタンをクリック
 		webDriver.findElement(By.xpath("//button[contains(text(),'提出する')]")).click();
 
-		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
+		//セクション詳細画面の「h2」が表示されるまで最大5秒待機する
 		visibilityTimeout(By.tagName("h2"), 5);
 
 		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
@@ -143,7 +143,7 @@ public class Case08 {
 		//ボタン名が「提出済～を確認する」に更新されて画面に表示されていることを検証
 		assertTrue(webDriver.findElement(By.cssSelector("input[value*='提出済み']")).isDisplayed());
 
-		//エビデンスを取得（テスト04）
+		//エビデンスを取得（テスト05）
 		getEvidence(new Object() {
 		});
 	}
@@ -152,7 +152,26 @@ public class Case08 {
 	@Order(6)
 	@DisplayName("テスト06 上部メニューの「ようこそ○○さん」リンクからユーザー詳細画面に遷移")
 	void test06() {
-		// TODO ここに追加
+
+		//セクション詳細画面の「h2」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面上の「ようこそ○○さん」のリンクをクリック
+		webDriver.findElement(By.partialLinkText("ようこそ")).click();
+
+		//ユーザー詳細画面が表示されるまで待機
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("ユーザー詳細", webDriver.getTitle());
+
+		//画面上のh2タグのテキストが「ユーザー詳細」であることを検証
+		assertEquals("ユーザー詳細", webDriver.findElement(By.tagName("h2")).getText());
+
+		//エビデンスを取得（テスト06）
+		getEvidence(new Object() {
+
+		});
 	}
 
 	@Test
