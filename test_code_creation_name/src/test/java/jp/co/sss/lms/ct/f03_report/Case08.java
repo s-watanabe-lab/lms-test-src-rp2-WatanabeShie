@@ -99,26 +99,26 @@ public class Case08 {
 		});
 	}
 
-	//	@Test
-	//	@Order(4)
-	//	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
-	//	void test04() {
-	//		//「日報を確認する」ボタンが表示されるまで最大5秒待機する
-	//		visibilityTimeout(By.cssSelector("input[value*='を確認する']"), 5);
-	//
-	//		//「日報を確認する」ボタンをクリック
-	//		webDriver.findElement(By.cssSelector("input[value*='を確認する']")).click();
-	//
-	//		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
-	//		visibilityTimeout(By.tagName("legend"), 5);
-	//
-	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
-	//		assertEquals("レポート登録 | LMS", webDriver.getTitle());
-	//
-	//		//エビデンスを取得（テスト04）
-	//		getEvidence(new Object() {
-	//		});
-	//	}
+	@Test
+	@Order(4)
+	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
+	void test04() {
+		//「日報を確認する」ボタンが表示されるまで最大5秒待機する
+		visibilityTimeout(By.cssSelector("input[value*='を確認する']"), 5);
+
+		//「日報を確認する」ボタンをクリック
+		webDriver.findElement(By.cssSelector("input[value*='を確認する']")).click();
+
+		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("legend"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("レポート登録 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト04）
+		getEvidence(new Object() {
+		});
+	}
 
 	@Test
 	@Order(5)
