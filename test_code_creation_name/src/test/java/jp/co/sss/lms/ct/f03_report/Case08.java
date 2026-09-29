@@ -79,15 +79,46 @@ public class Case08 {
 	@Order(3)
 	@DisplayName("テスト03 提出済の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
-		// TODO ここに追加
+		//「提出済み」が含まれる行の詳細ボタンを選択できるように探し出す
+		By targetBtn = By.xpath("//tr[contains(., '提出済み')]//input[@value='詳細']");
+
+		//「詳細」ボタンが表示されるまで最大5秒待機する
+		visibilityTimeout(targetBtn, 5);
+
+		//「詳細」ボタンをクリック
+		webDriver.findElement(targetBtn).click();
+
+		//セクション詳細画面の「h2」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
+
+		//エビデンスを取得（テスト03）
+		getEvidence(new Object() {
+		});
 	}
 
-	@Test
-	@Order(4)
-	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
-	void test04() {
-		// TODO ここに追加
-	}
+	//	@Test
+	//	@Order(4)
+	//	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
+	//	void test04() {
+	//		//「日報を確認する」ボタンが表示されるまで最大5秒待機する
+	//		visibilityTimeout(By.cssSelector("input[value*='を確認する']"), 5);
+	//
+	//		//「日報を確認する」ボタンをクリック
+	//		webDriver.findElement(By.cssSelector("input[value*='を確認する']")).click();
+	//
+	//		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
+	//		visibilityTimeout(By.tagName("legend"), 5);
+	//
+	//		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+	//		assertEquals("レポート登録 | LMS", webDriver.getTitle());
+	//
+	//		//エビデンスを取得（テスト04）
+	//		getEvidence(new Object() {
+	//		});
+	//	}
 
 	@Test
 	@Order(5)
