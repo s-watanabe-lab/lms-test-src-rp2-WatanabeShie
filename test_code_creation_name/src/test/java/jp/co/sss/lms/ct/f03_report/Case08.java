@@ -124,7 +124,28 @@ public class Case08 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を修正して「提出する」ボタンを押下しセクション詳細画面に遷移")
 	void test05() {
-		// TODO ここに追加
+		//「報告レポート」の入力欄（textarea)が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("textarea"), 5);
+
+		//「報告レポート」欄に「本日の学習内容：継承」と入力する
+		webDriver.findElement(By.tagName("textarea")).clear();
+		webDriver.findElement(By.tagName("textarea")).sendKeys("本日の学習内容：継承");
+
+		//「提出する」ボタンをクリック
+		webDriver.findElement(By.xpath("//button[contains(text(),'提出する')]")).click();
+
+		//レポート登録画面の「legend」が表示されるまで最大5秒待機する
+		visibilityTimeout(By.tagName("h2"), 5);
+
+		//画面遷移が成功したかを確かめるため、タイトルタグを取得・検証
+		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
+
+		//ボタン名が「提出済～を確認する」に更新されて画面に表示されていることを検証
+		assertTrue(webDriver.findElement(By.cssSelector("input[value*='提出済み']")).isDisplayed());
+
+		//エビデンスを取得（テスト04）
+		getEvidence(new Object() {
+		});
 	}
 
 	@Test
